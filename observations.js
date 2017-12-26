@@ -13,7 +13,7 @@ precip_accum - This function calculates and keeps track of the monthly precip. I
 function sixhour() { 
     var moment = Moment.load(); //Moment Function for easier time stamps 
     // open the spreadsheet you want code written into
-    var ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1q6J1RjqMGRPyHGUNDnjpeMd-7u-Rsb15MLtOsYBJEjw/edit#gid=0');
+    var ss = SpreadsheetApp.openByUrl('');  //Spreadsheet URL
     var sheet = ss.getSheets()[0];
     var date = new Date(); //grab the current utc hour to seperate code into 6 hr segments
     var range = sheet.getRange(49, 18).setValue("Last Run 6 hr values: " + date);  //Add a timestamp to the bottom when the script runs
@@ -417,7 +417,7 @@ function newSheet() {
     var Delete_Sheet = new Date(now.getTime() - MILLIS_PER_DAY * 199).toLocaleDateString()
 
     //Original Sheet Location
-    var source = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1q6J1RjqMGRPyHGUNDnjpeMd-7u-Rsb15MLtOsYBJEjw/edit#gid=0"); //This is the RTP observation spreadsheet location
+    var source = SpreadsheetApp.openByUrl(""); //This is the RTP observation spreadsheet location
     var sourcename = source.getSheetName(); //get the sheet we want copied sheet1
     var sValues = source.getDataRange().getValues(); //These are all the styles we want copied over the the destination sheet. 
     var sBG = source.getDataRange().getBackgrounds();
@@ -433,7 +433,7 @@ function newSheet() {
     var sNF = source.getDataRange().getNumberFormats();
     var sWR = source.getDataRange().getWraps();
     //Destination Location
-    var destination = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1HbLnJFKZ01KJ766TzRYMeKoM70-5kLifjPvBiZ1sc2A/edit#gid=472387932"); //This is the Daily obs data speadsheet location
+    var destination = SpreadsheetApp.openByUrl(""); //This is the Daily obs data speadsheet location
     var destinationSheet = destination.insertSheet(name, 0); //insert a sheet into the spreadsheet with the name of yesterdays date.
     destinationSheet.getRange(1, 1, sValues.length, sValues[0].length).setValues(sValues) //set the styles and copy over the information.
         .setBackgrounds(sBG)
@@ -452,7 +452,7 @@ function newSheet() {
 }
 
 function high() {
-    var ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1q6J1RjqMGRPyHGUNDnjpeMd-7u-Rsb15MLtOsYBJEjw/edit#gid=0'); //spreadsheet we are writing to
+    var ss = SpreadsheetApp.openByUrl(''); //spreadsheet we are writing to
     var sheet = ss.getSheets()[0]; //sheet we want to write to sheet1
     var output = [] 
     for (var i = 0; i < 15; i++) {
@@ -487,7 +487,7 @@ function high() {
 
 function precip_accum() {
     // open the spreadsheet you want code written into
-    var ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1q6J1RjqMGRPyHGUNDnjpeMd-7u-Rsb15MLtOsYBJEjw/edit#gid=0');
+    var ss = SpreadsheetApp.openByUrl('');
     var sheet = ss.getSheets()[0]; // This is the sheet we want to write to (sheet 1)
 
     var get_range = sheet.getRange(16, 2);
